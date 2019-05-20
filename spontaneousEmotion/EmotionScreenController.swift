@@ -87,8 +87,6 @@ class EmotionScreenController: UIViewController {
             alarmShock()
             AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
             counterTap = counterTap + 1
-            
-            //AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
         }
             
         else    {
@@ -165,10 +163,13 @@ class EmotionScreenController: UIViewController {
     }
     
     
-
-    //        UIView.animate(withDuration: 1, animations: {
-    //            self.trianglePlayButton.transform = CGAffineTransform(rotationAngle: 180)
-    //        }, completion: { _ in
+   /* UIView.animateKeyframes(withDuration: 5, delay: 0, animations: {
+    // Add animations
+    }, completion:{ _ in
+    print("I'm done!")
+    }) */
+    
+    
     //            UIView.animate(withDuration: 1, animations: {
     //                self.trianglePlayButton.transform = CGAffineTransform(scaleX: 2, y: 2)
     //            }, completion: { _ in

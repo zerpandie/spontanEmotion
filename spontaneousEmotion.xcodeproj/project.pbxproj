@@ -105,10 +105,10 @@
 			children = (
 				25CC5BDA2292B12300D23129 /* Sound */,
 				257DE9FA22917223001DCBC2 /* AppDelegate.swift */,
+				25FF0C2822927C8C001AF9E3 /* EmotionScreenController.swift */,
 				257DE9FC22917223001DCBC2 /* ViewController.swift */,
 				257DE9FE22917223001DCBC2 /* Main.storyboard */,
 				257DEA0322917226001DCBC2 /* LaunchScreen.storyboard */,
-				25FF0C2822927C8C001AF9E3 /* EmotionScreenController.swift */,
 				257DEA0122917226001DCBC2 /* Assets.xcassets */,
 				25FF0C2F2292920D001AF9E3 /* segitiga.png */,
 				257DEA0622917226001DCBC2 /* Info.plist */,
