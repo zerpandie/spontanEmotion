@@ -13,6 +13,8 @@ class EmotionScreenController: UIViewController {
     
     var counterTap = 0
     var player: AVAudioPlayer?
+    var colorBackgroundScreen: [CGColor] = [#colorLiteral(red: 0.9296030998, green: 0.9432629347, blue: 0.02441865578, alpha: 1),#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0),#colorLiteral(red: 0.1921568662, green: 0.007843137719, blue: 0.09019608051, alpha: 1)]
+    
     
     @IBOutlet weak var trianglePlayButton: UIButton!
     
@@ -89,11 +91,36 @@ class EmotionScreenController: UIViewController {
             counterTap = counterTap + 1
         }
             
+        else if counterTap == 9 {
+            // gerakan boring
+            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+            counterTap = counterTap + 1
+        }
+            
+        else if counterTap == 10 {
+            // elemen kejut ke-3
+            changeColorBG()     //bikin efek kelap kelip warna screen, dengan mengganti warna dasar secara cepat dan variatif
+            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+            
+        }
+            
         else    {
             
         }
         
+    }
+    
+    
+    
+    func changeColorBG() {
+        let randomNumberBGColor = Int.random(in: 0..<3)
         
+        
+        UIView.animate(withDuration: 0.1) {
+            self.view.layer.backgroundColor = self.colorBackgroundScreen[randomNumberBGColor]
+            
+            //self.myObject.layer.backgroundColor = self.variantColorsBackgroundButton[randomNumberButtonColor]
+        }
     }
     
     func playSound() {
@@ -117,6 +144,7 @@ class EmotionScreenController: UIViewController {
             print(error.localizedDescription)
         }
     }
+
     
     func playSound2()   {
         guard let url = Bundle.main.url(forResource: "bersin", withExtension: "mp3", subdirectory: "Sound") else { return }
