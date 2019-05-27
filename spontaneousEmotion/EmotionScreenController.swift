@@ -29,6 +29,9 @@ class EmotionScreenController: UIViewController {
     
     @IBAction func triangleActions(_ sender: UIButton) {
         
+        
+        
+        
         if counterTap == 0 {
             UIView.animate(withDuration: 1) {
                 self.trianglePlayButton.transform = CGAffineTransform(rotationAngle: 90)
@@ -45,7 +48,7 @@ class EmotionScreenController: UIViewController {
         }
             else if counterTap == 2 {
             UIView.animate(withDuration: 1) {
-                self.trianglePlayButton.setImage(UIImage(named: "circle"), for: UIControl.State.normal)
+                self.trianglePlayButton.setImage(UIImage(named: "yellow_ball"), for: UIControl.State.normal)
             }
             counterTap = counterTap + 1
         }   else if counterTap == 3 {
@@ -72,7 +75,7 @@ class EmotionScreenController: UIViewController {
             counterTap = counterTap + 1
             
         }   else if counterTap == 6 {
-            UIView.animate(withDuration: 2, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 0, options: [.allowUserInteraction], animations: {
+            UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 0, options: [.allowUserInteraction], animations: {
                 self.trianglePlayButton.transform = CGAffineTransform(translationX: 80, y: 90)
             })
                 counterTap = counterTap + 1
@@ -85,25 +88,75 @@ class EmotionScreenController: UIViewController {
         }
             
         else if counterTap == 8 {
-            //elemen kejut ke-2
-            alarmShock()
+            // gerakan boring
+            UIView.animate(withDuration: 1)  {
+                self.trianglePlayButton.setImage(UIImage(named: "kotak_merah"), for: UIControl.State.normal)
+            }
             AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
             counterTap = counterTap + 1
         }
             
         else if counterTap == 9 {
-            // gerakan boring
+            // elemen kejut ke-2
+            alarmShock()
             AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
             counterTap = counterTap + 1
         }
             
         else if counterTap == 10 {
-            // elemen kejut ke-3
             changeColorBG()     //bikin efek kelap kelip warna screen, dengan mengganti warna dasar secara cepat dan variatif
-            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+            counterTap = counterTap + 1
+        }
+        else if counterTap == 11   {
+            // gerakan boring
+            UIView.animate(withDuration: 2, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 0.5, options: [.allowUserInteraction], animations: {
+                self.trianglePlayButton.transform = CGAffineTransform(scaleX: 3.5, y: 3)
+            })
+            counterTap = counterTap + 1
+        }
+        else if counterTap == 12    {
+            //gerakan animasi kotak merahnya di translasi
+            UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 0, options: [.allowUserInteraction], animations: {
+                self.trianglePlayButton.transform = CGAffineTransform(translationX: 80, y: 90)
+            })
+            counterTap = counterTap + 1
+        }
+        else if counterTap == 13 {
+            UIView.animate(withDuration: 1)  {
+                self.trianglePlayButton.setImage(UIImage(named: "pinky_pig"), for: UIControl.State.normal)
+            }
             
+           oinkSound()      //sound effect funny pig
+           counterTap = counterTap + 1
+        }
+        else if counterTap == 14    {
+            UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 0, options: [.allowUserInteraction], animations: {
+                self.trianglePlayButton.transform = CGAffineTransform(translationX: 60, y: 70)
+            })
+           counterTap = counterTap + 1
+        }
+        else if counterTap == 15    {
+            UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 0.5, options: [.allowUserInteraction], animations: {
+                self.trianglePlayButton.transform = CGAffineTransform(scaleX: 4, y: 4)
+            })
+            oinkSound()
+            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
         }
             
+        else if counterTap == 16    {
+            // masukkin suara Apa Sih
+        }
+            
+        else if counterTap == 17 {
+            // masukkin suara Pencet-pencet terus
+        }
+            
+        else if counterTap > 17 {
+           // masukkin suara Stop
+        }
+         
+            
+        // other condition
         else    {
             
         }
@@ -146,8 +199,8 @@ class EmotionScreenController: UIViewController {
     }
 
     
-    func playSound2()   {
-        guard let url = Bundle.main.url(forResource: "bersin", withExtension: "mp3", subdirectory: "Sound") else { return }
+    func oinkSound()   {
+        guard let url = Bundle.main.url(forResource: "oink", withExtension: "mp3", subdirectory: "Sound") else { return }
         
         do {
             try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
@@ -190,42 +243,42 @@ class EmotionScreenController: UIViewController {
         }
     }
     
-    
-   /* UIView.animateKeyframes(withDuration: 5, delay: 0, animations: {
-    // Add animations
-    }, completion:{ _ in
-    print("I'm done!")
-    }) */
-    
-    
-    //            UIView.animate(withDuration: 1, animations: {
-    //                self.trianglePlayButton.transform = CGAffineTransform(scaleX: 2, y: 2)
-    //            }, completion: { _ in
-    //                UIView.animate(withDuration: 1, animations: {
-    //                    self.trianglePlayButton.transform = CGAffineTransform(rotationAngle: 270)
-    //                }, completion: { _ in
-    //                    UIView.animate(withDuration: 1, animations: {
-    //                        self.trianglePlayButton.transform = CGAffineTransform(scaleX: 3, y: 3)
-    //                    }, completion: { _ in
-    //                        UIView.animate(withDuration: 1, animations: {
-    //                            self.trianglePlayButton.transform = CGAffineTransform(rotationAngle: 300)
-    //                        }, completion: { _ in
-    //                            print("I'm done!")
-    //                        })
-    //                    })
-    //                })
-    //            })
-    //        })
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
+
+
+/* UIView.animateKeyframes(withDuration: 5, delay: 0, animations: {
+ // Add animations
+ }, completion:{ _ in
+ print("I'm done!")
+ }) */
+
+
+//            UIView.animate(withDuration: 1, animations: {
+//                self.trianglePlayButton.transform = CGAffineTransform(scaleX: 2, y: 2)
+//            }, completion: { _ in
+//                UIView.animate(withDuration: 1, animations: {
+//                    self.trianglePlayButton.transform = CGAffineTransform(rotationAngle: 270)
+//                }, completion: { _ in
+//                    UIView.animate(withDuration: 1, animations: {
+//                        self.trianglePlayButton.transform = CGAffineTransform(scaleX: 3, y: 3)
+//                    }, completion: { _ in
+//                        UIView.animate(withDuration: 1, animations: {
+//                            self.trianglePlayButton.transform = CGAffineTransform(rotationAngle: 300)
+//                        }, completion: { _ in
+//                            print("I'm done!")
+//                        })
+//                    })
+//                })
+//            })
+//        })
+
+
+/*
+ // MARK: - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+ // Get the new view controller using segue.destination.
+ // Pass the selected object to the new view controller.
+ }
+ */
